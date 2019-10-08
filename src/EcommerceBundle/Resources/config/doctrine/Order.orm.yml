@@ -1,0 +1,48 @@
+EcommerceBundle\Entity\Order:
+    type: entity
+    table: orders
+    indexes:
+        fk_orders_users:
+            columns:
+                - idUser
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        quantity:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+        price:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+    manyToOne:
+        iduser:
+            targetEntity: User
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idUser:
+                    referencedColumnName: id
+            orphanRemoval: false
+    manyToMany:
+        idproduct:
+            targetEntity: Product
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: idorder
+            inversedBy: null
+            joinTable: null
+            orderBy: null
+    lifecycleCallbacks: {  }

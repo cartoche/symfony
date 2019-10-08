@@ -1,0 +1,21 @@
+ecommerce_index:
+    path:     /ecommerce/index
+    defaults: { _controller: EcommerceBundle:Ecommerce:index }
+    
+ecommerce_create:
+    path:     /ecommerce/create
+    defaults: { _controller: EcommerceBundle:Ecommerce:create }
+    
+ecommerce_read:
+    path:     /ecommerce/read
+    defaults: { _controller: EcommerceBundle:Ecommerce:read }
+    
+ecommerce_update:
+    path:     /ecommerce/update/{id}/{role}/{name}/{surname}/{email}/{password}
+    defaults: { _controller: EcommerceBundle:Ecommerce:update }
+    
+ecommerce_delete:
+    path:     /ecommerce/delete/{id}
+    defaults: { _controller: EcommerceBundle:Ecommerce:delete }
+    
+

@@ -1,0 +1,55 @@
+EcommerceBundle\Entity\Shipping:
+    type: entity
+    table: shippings
+    indexes:
+        fk_shippings_orders:
+            columns:
+                - idOrder
+    id:
+        id:
+            type: integer
+            nullable: false
+            options:
+                unsigned: false
+            id: true
+            generator:
+                strategy: IDENTITY
+    fields:
+        reference:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+        status:
+            type: text
+            nullable: true
+            length: 65535
+            options:
+                fixed: false
+        sendDate:
+            type: date
+            nullable: true
+            column: send_date
+        delivereddate:
+            type: date
+            nullable: true
+            column: deliveredDate
+        address:
+            type: string
+            nullable: true
+            length: 255
+            options:
+                fixed: false
+    manyToOne:
+        idorder:
+            targetEntity: Order
+            cascade: {  }
+            fetch: LAZY
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                idOrder:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

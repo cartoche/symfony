@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Order" table="orders">
+    <indexes>
+      <index name="fk_orders_users" columns="idUser"/>
+    </indexes>
+    <id name="id" type="integer" column="id">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="quantity" type="integer" column="quantity" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="price" type="integer" column="price" nullable="false">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <many-to-one field="iduser" target-entity="Users" fetch="LAZY">
+      <join-columns>
+        <join-column name="idUser" referenced-column-name="id"/>
+      </join-columns>
+    </many-to-one>
+    <many-to-many field="idproduct" target-entity="Products" mapped-by="idorder" fetch="LAZY"/>
+  </entity>
+</doctrine-mapping>
